@@ -1,0 +1,54 @@
+{
+  "name": "@iwf-web/package-release-test",
+  "type": "module",
+  "version": "0.1.2",
+  "description": "Standard eslint-coding-standard for IWF projects",
+  "author": {
+    "name": "D3strukt0r",
+    "email": "dev@d3strukt0r.dev",
+    "url": "https://github.com/D3strukt0r"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/iwf-web/eslint-coding-standard",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:iwf-web/eslint-coding-standard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iwf-web/eslint-coding-standard/issues",
+    "email": "web-solutions@iwf.ch"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-coding-standard"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsdown --clean --dts",
+    "prepack": "nr build"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "^6.0.0",
+    "@eslint-react/eslint-plugin": "^2.0.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-refresh": "^0.4.0"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^28.0.0",
+    "@iwf-web/tsconfig": "^1.0.1",
+    "eslint": "^9.39.2",
+    "jiti": "^2.6.1",
+    "tsdown": "^0.18.2"
+  },
+  "packageManager": "pnpm@10.26.1+sha512.664074abc367d2c9324fdc18037097ce0a8f126034160f709928e9e9f95d98714347044e5c3164d65bd5da6c59c6be362b107546292a8eecb7999196e5ce58fa"
+}

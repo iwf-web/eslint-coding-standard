@@ -1,0 +1,3 @@
+# ESLint needs direct access to the TypeScript configuration packages
+publicHoistPattern:
+  - "@tsconfig/*"
