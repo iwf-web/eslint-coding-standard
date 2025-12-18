@@ -1,0 +1,65 @@
+name: Publish Package to npmjs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - name: Create Release PR
+        uses: googleapis/release-please-action@v4
+        id: release
+
+  publish:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # for provenance
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      # Setup .npmrc file to publish to npm
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Get pnpm cache directory path
+        id: pnpm-cache-dir-path
+        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: Cache node modules
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+      - name: Install package dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+
+      # Using Trusted Publisher to sign the package
+      # See: https://docs.npmjs.com/trusted-publishers
+      # See: https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available/
+      # Provenance is enabled by default when publishing with an id-token
+      # Publish uses OIDC - no token needed
+      #- name: Publish Package
+      #  run: pnpm publish
