@@ -1,0 +1,33 @@
+{
+  "name": "@iwf-web/eslint-coding-standard",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Standard eslint-coding-standard for IWF projects",
+  "author": {
+    "name": "D3strukt0r",
+    "email": "dev@d3strukt0r.dev",
+    "url": "https://github.com/D3strukt0r"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/iwf-web/eslint-coding-standard",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:iwf-web/eslint-coding-standard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iwf-web/eslint-coding-standard/issues",
+    "email": "web-solutions@iwf.ch"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-coding-standard"
+  ],
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402"
+}
