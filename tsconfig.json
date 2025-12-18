@@ -1,0 +1,9 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "extends": ["@iwf-web/tsconfig/react-strict/tsconfig.json"],
+  "include": ["*.ts"],
+  "compilerOptions": {
+    "baseUrl": ".", // Base directory for non-relative module names
+    "isolatedDeclarations": true // Ensure that each file can be safely transpiled without relying on other files
+  }
+}
