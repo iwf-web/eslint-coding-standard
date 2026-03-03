@@ -1,7 +1,7 @@
 {
   "name": "@iwf-web/package-release-test",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Standard eslint-coding-standard for IWF projects",
   "author": {
     "name": "D3strukt0r",
