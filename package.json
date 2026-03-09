@@ -49,7 +49,7 @@
   "devDependencies": {
     "@antfu/ni": "^28.2.0",
     "@iwf-web/tsconfig": "^1.0.1",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.3",
     "jiti": "^2.6.1",
     "tsdown": "^0.21.1",
     "typescript": "^5.9.3"
