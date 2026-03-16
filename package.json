@@ -47,7 +47,7 @@
     "eslint-plugin-react-refresh": "^0.5.0"
   },
   "devDependencies": {
-    "@antfu/ni": "^28.2.0",
+    "@antfu/ni": "^29.0.0",
     "@iwf-web/tsconfig": "^1.0.1",
     "eslint": "^10.0.3",
     "jiti": "^2.6.1",
