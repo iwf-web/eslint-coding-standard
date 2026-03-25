@@ -10,8 +10,8 @@ A standardized ESLint configuration package for IWF projects. Built on top of [@
 
 The package provides two configs:
 
-- **Standard TypeScript** (`iwfStandardTs`) — Full config with TypeScript strict checking, React, and all style rules. Use this for TypeScript projects.
-- **Standard JavaScript** (`iwfStandardJs`) — Base config with React and style rules, without TypeScript. Use this for JS-only projects.
+- **Standard TypeScript** (`iwfWebStandardTs`) — Full config with TypeScript strict checking, React, and all style rules. Use this for TypeScript projects.
+- **Standard JavaScript** (`iwfWebStandardJs`) — Base config with React and style rules, without TypeScript. Use this for JS-only projects.
 
 The TypeScript config extends the JavaScript one, so all JS/React rules are included automatically.
 
@@ -68,17 +68,17 @@ Create an `eslint.config.js` (or `eslint.config.ts`) file in your project root:
 #### TypeScript projects
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardTs();
+export default iwfWebStandardTs();
 ```
 
 #### JavaScript-only projects
 
 ```js
-import { iwfStandardJs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardJs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardJs();
+export default iwfWebStandardJs();
 ```
 
 #### Subpath imports
@@ -86,8 +86,8 @@ export default iwfStandardJs();
 Each config is also available as a direct subpath import:
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard/standard-ts';
-import { iwfStandardJs } from '@iwf-web/eslint-coding-standard/standard-js';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard/standard-ts';
+import { iwfWebStandardJs } from '@iwf-web/eslint-coding-standard/standard-js';
 ```
 
 #### With Custom Options
@@ -95,9 +95,9 @@ import { iwfStandardJs } from '@iwf-web/eslint-coding-standard/standard-js';
 You can pass options to override the default configuration:
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardTs({
+export default iwfWebStandardTs({
   typescript: {
     tsconfigPath: './tsconfig.app.json',
   },
@@ -109,9 +109,9 @@ export default iwfStandardTs({
 You can append additional ESLint flat config objects:
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardTs(
+export default iwfWebStandardTs(
   {},
   {
     rules: {
@@ -120,6 +120,15 @@ export default iwfStandardTs(
   },
 );
 ```
+
+### Migration from v1
+
+The function names have been updated to match the `@iwf-web` package scope:
+
+- `iwfStandardTs` → `iwfWebStandardTs`
+- `iwfStandardJs` → `iwfWebStandardJs`
+
+The old names still work but are deprecated and will be removed in the next major version.
 
 ## Contributing
 

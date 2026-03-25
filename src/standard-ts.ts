@@ -13,7 +13,7 @@ const tsRules = {
 } satisfies Rules;
 
 // eslint-disable-next-line ts/promise-function-async
-export function iwfStandardTs(
+export function iwfWebStandardTs(
   options?: Parameters<typeof antfu>[0],
   ...userConfigs: Parameters<typeof antfu>[1][]
 ): ReturnType<typeof antfu> {
@@ -40,3 +40,9 @@ export function iwfStandardTs(
     ...userConfigs,
   );
 }
+
+/**
+ * @deprecated Use {@link iwfWebStandardTs} instead. Will be removed in the next major version.
+ */
+// TODO: Remove in next major version
+export const iwfStandardTs: typeof iwfWebStandardTs = iwfWebStandardTs;
