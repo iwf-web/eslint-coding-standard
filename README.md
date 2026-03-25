@@ -10,14 +10,15 @@ A standardized ESLint configuration package for IWF projects. Built on top of [@
 
 The package provides two configs:
 
-- **Standard TypeScript** (`iwfStandardTs`) — Full config with TypeScript strict checking, React, and all style rules. Use this for TypeScript projects.
-- **Standard JavaScript** (`iwfStandardJs`) — Base config with React and style rules, without TypeScript. Use this for JS-only projects.
+- **Standard TypeScript** (`iwfWebStandardTs`) — Full config with TypeScript strict checking, React, and all style rules. Use this for TypeScript projects.
+- **Standard JavaScript** (`iwfWebStandardJs`) — Base config with React and style rules, without TypeScript. Use this for JS-only projects.
 
 The TypeScript config extends the JavaScript one, so all JS/React rules are included automatically.
 
 Both configs build on `@antfu/eslint-config` with the following customizations:
 
 ### Code Style
+
 - **Semicolons**: Required at statement ends
 - **Curly braces**: Required for all control statements
 - **Arrow functions**: Parentheses around single parameters
@@ -26,16 +27,19 @@ Both configs build on `@antfu/eslint-config` with the following customizations:
 - **Quote style**: Single quotes, with object properties quoted only when required
 
 ### TypeScript
+
 - Strict type checking enabled with project-based tsconfig detection
 - Allows promises in event handlers (e.g., `onClick`)
 - Relaxed `any` type restrictions for third-party library interoperability
 
 ### React
+
 - Full React support with hooks linting
 - Allows common child manipulation patterns (`cloneElement`, `children.map`, etc.)
 - Const declarations allowed for components
 
 ### Disabled Features
+
 - JSONC, YAML, and Markdown linting disabled
 
 ## Getting Started
@@ -64,17 +68,17 @@ Create an `eslint.config.js` (or `eslint.config.ts`) file in your project root:
 #### TypeScript projects
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardTs();
+export default iwfWebStandardTs();
 ```
 
 #### JavaScript-only projects
 
 ```js
-import { iwfStandardJs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardJs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardJs();
+export default iwfWebStandardJs();
 ```
 
 #### Subpath imports
@@ -82,8 +86,8 @@ export default iwfStandardJs();
 Each config is also available as a direct subpath import:
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard/standard-ts';
-import { iwfStandardJs } from '@iwf-web/eslint-coding-standard/standard-js';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard/standard-ts';
+import { iwfWebStandardJs } from '@iwf-web/eslint-coding-standard/standard-js';
 ```
 
 #### With Custom Options
@@ -91,9 +95,9 @@ import { iwfStandardJs } from '@iwf-web/eslint-coding-standard/standard-js';
 You can pass options to override the default configuration:
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardTs({
+export default iwfWebStandardTs({
   typescript: {
     tsconfigPath: './tsconfig.app.json',
   },
@@ -105,9 +109,9 @@ export default iwfStandardTs({
 You can append additional ESLint flat config objects:
 
 ```js
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
 
-export default iwfStandardTs(
+export default iwfWebStandardTs(
   {},
   {
     rules: {
@@ -117,9 +121,18 @@ export default iwfStandardTs(
 );
 ```
 
+### Migration from v1
+
+The function names have been updated to match the `@iwf-web` package scope:
+
+- `iwfStandardTs` → `iwfWebStandardTs`
+- `iwfStandardJs` → `iwfWebStandardJs`
+
+The old names still work but are deprecated and will be removed in the next major version.
+
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+Please read [CONTRIBUTING.md][contributing] for details on our code of conduct and the process for submitting pull requests.
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated releases and changelog generation.
 
@@ -129,11 +142,21 @@ We use [SemVer](http://semver.org/) for versioning. For available versions, see 
 
 ## Authors
 
-All authors can be found in the [AUTHORS.md](AUTHORS.md) file.
+### Special thanks for all the people who had helped this project so far
 
-Contributors can be found in the [CONTRIBUTORS.md](CONTRIBUTORS.md) file.
+- **Manuele** - [D3strukt0r](https://github.com/D3strukt0r)
 
 See also the full list of [contributors][gh-contributors] who participated in this project.
+
+### I would like to join this list. How can I help the project?
+
+We're currently looking for contributions for the following:
+
+- [ ] Bug fixes
+- [ ] Translations
+- [ ] etc...
+
+For more information, please refer to our [CONTRIBUTING.md][contributing] guide.
 
 ## License
 
@@ -141,9 +164,10 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 ## Acknowledgments
 
-A list of used libraries and code with their licenses can be found in the [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) file.
+This project currently uses no third-party libraries or copied code.
 
 [license]: https://github.com/iwf-web/eslint-coding-standard/blob/main/LICENSE.txt
 [npm]: https://www.npmjs.com/package/@iwf-web/eslint-coding-standard
 [gh-tags]: https://github.com/iwf-web/eslint-coding-standard/tags
 [gh-contributors]: https://github.com/iwf-web/eslint-coding-standard/contributors
+[contributing]: https://github.com/iwf-web/.github/blob/main/CONTRIBUTING.md

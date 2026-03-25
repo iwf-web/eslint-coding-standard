@@ -25,8 +25,8 @@ Note: Tests are not yet implemented.
 
 The package exports two configs from separate entry points:
 
-- **`iwfStandardTs`** (`src/standard-ts.ts`) — Full config with TypeScript strict checking, React, and all style rules. Imports and extends the JS config.
-- **`iwfStandardJs`** (`src/standard-js.ts`) — Base config with React and style rules, without TypeScript.
+- **`iwfWebStandardTs`** (`src/standard-ts.ts`) — Full config with TypeScript strict checking, React, and all style rules. Imports and extends the JS config.
+- **`iwfWebStandardJs`** (`src/standard-js.ts`) — Base config with React and style rules, without TypeScript.
 - **`src/index.ts`** — Barrel re-export of both configs.
 
 `standard-js.ts` also exports `baseOptions` and `baseRules` constants, which `standard-ts.ts` imports to extend with TS-specific rules.
@@ -35,15 +35,15 @@ The package exports two configs from separate entry points:
 
 ```typescript
 // TypeScript project
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard';
-export default iwfStandardTs();
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard';
+export default iwfWebStandardTs();
 
 // JavaScript-only project
-import { iwfStandardJs } from '@iwf-web/eslint-coding-standard';
-export default iwfStandardJs();
+import { iwfWebStandardJs } from '@iwf-web/eslint-coding-standard';
+export default iwfWebStandardJs();
 
 // Subpath imports also available
-import { iwfStandardTs } from '@iwf-web/eslint-coding-standard/standard-ts';
+import { iwfWebStandardTs } from '@iwf-web/eslint-coding-standard/standard-ts';
 ```
 
 Both functions accept `(options?, ...userConfigs)` — options override `antfu()` defaults, userConfigs are additional ESLint flat config objects appended after the IWF rules.

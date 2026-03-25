@@ -1,2 +1,2 @@
-export {iwfStandardJs} from './standard-js';
-export {iwfStandardTs} from './standard-ts';
+export {iwfStandardJs, iwfWebStandardJs} from './standard-js';
+export {iwfStandardTs, iwfWebStandardTs} from './standard-ts';

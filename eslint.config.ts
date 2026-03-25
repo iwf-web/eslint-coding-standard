@@ -1,3 +1,3 @@
-import {iwfStandardTs} from './src';
+import {iwfWebStandardTs} from './src';
 
-export default iwfStandardTs();
+export default iwfWebStandardTs();
