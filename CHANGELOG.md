@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/iwf-web/eslint-coding-standard/compare/1.0.0...1.1.0) (2026-03-25)
+
+
+### ✨ Features
+
+* rename config functions to align with package scope ([724143a](https://github.com/iwf-web/eslint-coding-standard/commit/724143a6c9ea223d32b4f31bbe26c99eff1599bc))
+
+
+### 📚 Documentation
+
+* Simplify after moving community files to org repo .github ([93ef236](https://github.com/iwf-web/eslint-coding-standard/commit/93ef236d3710099fbeded482b3876d2a20523b6b))
+
 ## [1.0.0](https://github.com/iwf-web/eslint-coding-standard/compare/0.1.0...1.0.0) (2026-03-03)
 
 
