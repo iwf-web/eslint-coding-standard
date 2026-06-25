@@ -41,18 +41,18 @@
     "prepack": "nr build"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^7.0.0",
-    "@eslint-react/eslint-plugin": "^2.0.0",
+    "@antfu/eslint-config": "^9.0.0",
+    "@eslint-react/eslint-plugin": "^5.0.0",
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-refresh": "^0.5.0"
   },
   "devDependencies": {
     "@antfu/ni": "^30.0.0",
     "@iwf-web/tsconfig": "^1.0.1",
-    "eslint": "^10.0.3",
-    "jiti": "^2.6.1",
-    "tsdown": "^0.21.1",
-    "typescript": "^5.9.3"
+    "eslint": "^10.0.0",
+    "jiti": "^2.0.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^5.0.0"
   },
-  "packageManager": "pnpm@10.30.3"
+  "packageManager": "pnpm@11.9.0+sha512.bd682d5d03fe525ef7c9fd6780c6884d1e756ac4c9c9fe00c538782824310dcf90e3ddc4f53835f06dfaebd5085e41855e0bcbb3b60de2ac5bbab89e5036f03b"
 }
