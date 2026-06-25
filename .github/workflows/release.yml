@@ -28,7 +28,7 @@ jobs:
       id-token: write # for provenance
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # Setup .npmrc file to publish to npm
       - name: Setup Node.js
