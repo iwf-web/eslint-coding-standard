@@ -55,3 +55,16 @@ Defined in `baseRules` (`src/standard-js.ts`) and `tsRules` (`src/standard-ts.ts
 - **pnpm**: Required package manager (version locked via `packageManager`).
 - **Conventional Commits**: Drive automated releases via release-please (`release-please-config.json`, `.release-please-manifest.json`).
 - **Node 18+** required by consumers; dev container uses Node 24.
+
+### TypeScript 6 and 7 side by side
+
+TypeScript 7 (the native Go compiler) ships no programmatic API — that arrives in 7.1 — so `typescript-eslint` cannot run on it and hard-crashes on module load. The devDependencies therefore use the aliasing scheme from the [TypeScript 7.0 announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/):
+
+- `@typescript/native: npm:typescript@^7` — provides the `tsc` binary, so `pnpm ts:check` type checks with the native compiler.
+- `typescript: npm:@typescript/typescript6@^6` — provides the `typescript` module, so `typescript-eslint` (via `@antfu/eslint-config`) and `tsdown` get the TS 6 API they need. Its own `tsc` sits behind the non-conflicting `tsc6` binary.
+
+Do not collapse this back into a single `typescript` dependency until `typescript-eslint` supports TS 7. `pnpm peers check` reports an unmet `typescript` peer for the `@typescript-eslint/*` packages — expected, since peers are matched by package name and the alias resolves to `@typescript/typescript6`; module resolution still works.
+
+Consumers hit the same wall, so the README documents this setup plus the per-package-manager caveats around the duplicate `tsc` binary. Keep both in sync.
+
+Because `pnpm-lock.yaml` is gitignored, CI resolves dependencies fresh on every run and unrelated upstream releases can break the build. `@iwf-web/tsconfig`'s `react-strict` preset inherits `types: ["vite/client"]` from `@tsconfig/vite-react` v8, which is why `vite` is a devDependency here despite this package not using it.
