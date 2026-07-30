@@ -3,7 +3,6 @@
   "extends": ["@iwf-web/tsconfig/react-strict/tsconfig.json"],
   "include": ["src/**/*.ts"],
   "compilerOptions": {
-    "baseUrl": ".", // Base directory for non-relative module names
     "declaration": true, // Required by isolatedDeclarations (tsc --noEmit still emits nothing)
     "isolatedDeclarations": true // Ensure that each file can be safely transpiled without relying on other files
   }

@@ -48,6 +48,28 @@ Both configs build on `@antfu/eslint-config` with the following customizations:
 
 - Node.js 18 or higher
 - pnpm, npm, or yarn
+- TypeScript 6 or lower for TypeScript projects — see below if you want TypeScript 7
+
+### TypeScript 7
+
+`typescript-eslint`, which powers the type-aware rules, cannot run on TypeScript 7: version 7.0 ships no programmatic API, so importing it crashes with `TypeError: Cannot read properties of undefined`. A stable API is expected in TypeScript 7.1. Until then, install both compilers side by side as described in the [TypeScript 7.0 announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/):
+
+```json
+{
+  "devDependencies": {
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
+  }
+}
+```
+
+`tsc` then runs the native TypeScript 7 compiler, while everything that imports the `typescript` module — ESLint, editors, bundlers — keeps getting the TypeScript 6 API. The TypeScript 6 compiler stays available as `tsc6`.
+
+Keep the `@typescript/native` name. Package managers resolve the duplicate `tsc` binary differently, and this name is the one that works everywhere:
+
+- **pnpm** and **Yarn Classic (1.x)** — works as is.
+- **npm** — picks the winning binary by lexical sort, so a name sorting after `typescript` (such as the `typescript-7` used in early versions of the announcement) hands `tsc` to TypeScript 6 instead.
+- **Yarn Berry** — needs 4.18.0 or newer, which [prefers direct dependency binaries](https://github.com/yarnpkg/berry/pull/7216). On older versions, transitive binaries win and `tsc` resolves to TypeScript 6; set `nmHoistingLimits: dependencies` in `.yarnrc.yml` as a workaround.
 
 ### Installation
 
